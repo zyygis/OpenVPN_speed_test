@@ -1,0 +1,26 @@
+{
+  "client_config": 
+  {
+    "Config_name": "router2",
+    "Server_LAN_ip": "192.168.3.1",
+    "Server_WAN_ip": "84.15.161.186",
+    "Server_User": "root",
+    "Server_Password": "Admin123",
+    "Encryption":"BF-CBC",
+    "LZO":"yes",
+    "Protocol":"tcp-client",
+    "Authentication":"static key"
+  },
+  "server_config":
+  {
+    "Config_name": "router1",
+    "Client_LAN_ip": "192.168.2.1",
+    "Client_WAN_ip": "84.15.129.227",
+    "Client_User": "root",
+    "Client_Password": "Admin123",
+    "Encryption":"BF-CBC",
+    "LZO":"yes",
+    "Protocol":"tcp-server",
+    "Authentication":"static key"
+  }
+}
