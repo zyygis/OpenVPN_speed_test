@@ -17,7 +17,6 @@ from tqdm import tqdm
 
 # rutx09 84.15.129.227
 # rutx11 84.15.161.186
-
 class Control:
 
     client_ssh = None
