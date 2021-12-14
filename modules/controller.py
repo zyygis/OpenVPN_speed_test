@@ -44,7 +44,7 @@ class Control:
         self.__configFile.create_config("client")
         self.client_ssh, self.client_shell = connModule.createSSHClient(self.client_info["Client_WAN_ip"], self.client_info["Client_User"], self.client_info["Client_Password"])
         self.exec_commands(self.client_ssh, self.client_shell)
-        connModule.sendCommand(self.client_shell, "iperf3 -c " + self.server_info["Server_LAN_ip"])
+        # connModule.sendCommand(self.client_shell, "iperf3 -c " + self.server_info["Server_LAN_ip"])
 
     def speed_test(self, shell, client_info, server_info, test_cycles, file_name):
         output = connModule.getResponse(shell)
@@ -53,8 +53,10 @@ class Control:
         download = []
         upload_sum = 0
         download_sum = 0
+        print("...")
         for i in tqdm(range(test_cycles)):
             connModule.sendCommand(shell, "iperf3 -c " + server_info["Server_LAN_ip"])
+            time.sleep(2)
             # print("Test cycle ", i)
             while True:
                 output = connModule.getResponse(shell)
@@ -81,7 +83,7 @@ class Control:
         test_data = [['Encryption', 'LZO', ' '],[encrypt, lzo, ' '],[],['Authentication', 'Protocol', ' '],[authent, protocol, ' '],[],['Upload Mbits/sec', 'Download Mbits/sec', ' ']]
         for (line, dline) in zip(upload, download):
             test_data.append([line, dline, ' '])
-        test_data.append([])
+        # test_data.append([])
         test_data.append(['Upload average', 'Download average', ' '])
         test_data.append([upaverage, downaverage, ' '])
         return test_data
