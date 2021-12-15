@@ -66,7 +66,7 @@
 **Authentication mode available is only static key.**  
 
 ### 5. Command line arguments  
-- -t, --testcycles | Number for how many iperf test to run. (Default is 5)
+- -t, --testcycles | Number for how many iperf3 test to run. (Default is 5)
 - -f, --filename | Test report file name. (Default is OpenVPN_report)
 
 Test report is saved in ~/OpenVPN_test/Test_report
