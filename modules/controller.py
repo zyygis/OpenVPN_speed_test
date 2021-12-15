@@ -31,7 +31,7 @@ class Control:
         self.client_ssh.close()
 
     def server_setup(self):
-        print("Server is being prepared")
+        print("Server is being prepared...")
         self.__configFile.create_config("server")
         self.server_ssh, self.server_shell = connModule.createSSHClient(self.server_info["Server_LAN_ip"], self.server_info["Server_User"], self.server_info["Server_Password"])
         device_name = self.checkDevice(self.server_shell)
@@ -39,7 +39,7 @@ class Control:
         connModule.sendCommand(self.server_shell, "iperf3 -s")
 
     def client_setup(self):
-        print("Client is being prepared")
+        print("Client is being prepared...")
         self.__configFile.create_config("client")
         self.client_ssh, self.client_shell = connModule.createSSHClient(self.client_info["Client_WAN_ip"], self.client_info["Client_User"], self.client_info["Client_Password"])
         device_name = self.checkDevice(self.client_shell)
