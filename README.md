@@ -23,10 +23,10 @@
 ![alt text](https://github.com/zyygis/OpenVPN_speed_test/blob/master/Mobile%20topology.png)
 ### 4. In info.json file fill in necessary information.
 **WIRED WAN TEST**  
-In info.json file in "Server_WAN_ip" line enter **WAN IP ADDRESS** (Server_WAN_ip": "**WAN IP**").  
+In info.json file at "Server_WAN_ip" line enter **WAN IP ADDRESS** (Server_WAN_ip": "**WAN IP**").  
   
 **MOBILE TEST**  
-In info.json file in "Server_WAN_ip" line enter **MOBILE PUBLIC IP ADDRESS** (Server_WAN_ip": "**MOBILE PUBLIC IP**").  
+In info.json file at "Server_WAN_ip" line enter **MOBILE PUBLIC IP ADDRESS** (Server_WAN_ip": "**MOBILE PUBLIC IP**").  
   
 Example below is **WIRED WAN** test.
 ```json
