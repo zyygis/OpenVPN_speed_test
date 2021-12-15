@@ -18,7 +18,7 @@
 ### 3. Connect devices with Ethernet cable via WAN port.
 
 ### Wired WAN Topology
-![alt text](https://github.com/zyygis/OpenVPN_speed_test/blob/master/diagram.png)
+![alt text](https://github.com/zyygis/OpenVPN_speed_test/blob/master/WAN%20topology.png)
 ### Mobile Topology
 ![alt text]()
 ### 4. In info.json file fill in necessary information.
