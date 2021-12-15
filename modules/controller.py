@@ -44,7 +44,7 @@ class Control:
         print("Preparing client")
         self.__configFile.create_config("client")
         self.client_ssh, self.client_shell = connModule.createSSHClient(self.client_info["Client_WAN_ip"], self.client_info["Client_User"], self.client_info["Client_Password"])
-        device_name = self.checkDevice(self.server_shell)
+        device_name = self.checkDevice(self.client_shell)
         self.exec_commands(self.client_ssh, self.client_shell, device_name)
         # connModule.sendCommand(self.client_shell, "iperf3 -c " + self.server_info["Server_LAN_ip"])
 
@@ -108,7 +108,7 @@ class Control:
         connModule.sendCommand(shell, "uci get system.system.routername")
         response = connModule.getResponse(shell)
         result = response.split("\n")[1].split()
-        print(result[0])
+        # print(".............."+str(response)+".....................")
         if "RUT9" in result[0]:
             device_name = True
         else:
