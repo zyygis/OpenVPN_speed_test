@@ -36,16 +36,16 @@ class Control:
         print("Preparing server")
         self.__configFile.create_config("server")
         self.server_ssh, self.server_shell = connModule.createSSHClient(self.server_info["Server_LAN_ip"], self.server_info["Server_User"], self.server_info["Server_Password"])
-        device = self.checkDevice(self.server_shell)
-        self.exec_commands(self.server_ssh, self.server_shell, device)
+        device_name = self.checkDevice(self.server_shell)
+        self.exec_commands(self.server_ssh, self.server_shell, device_name)
         connModule.sendCommand(self.server_shell, "iperf3 -s")
 
     def client_setup(self):
         print("Preparing client")
         self.__configFile.create_config("client")
         self.client_ssh, self.client_shell = connModule.createSSHClient(self.client_info["Client_WAN_ip"], self.client_info["Client_User"], self.client_info["Client_Password"])
-        device = self.checkDevice(self.server_shell)
-        self.exec_commands(self.client_ssh, self.client_shell, device)
+        device_name = self.checkDevice(self.server_shell)
+        self.exec_commands(self.client_ssh, self.client_shell, device_name)
         # connModule.sendCommand(self.client_shell, "iperf3 -c " + self.server_info["Server_LAN_ip"])
 
     def speed_test(self, shell, client_info, server_info, test_cycles, file_name):
@@ -90,15 +90,15 @@ class Control:
         test_data.append([upaverage, downaverage, ' '])
         return test_data
 
-    def exec_commands(self, ssh, shell, device):
+    def exec_commands(self, ssh, shell, name_rut9):
 
-        filesModule.sendFiles(ssh, device)
+        filesModule.sendFiles(ssh, name_rut9)
         time.sleep(2)
         connModule.sendCommand(shell, "/etc/init.d/openvpn restart")
         time.sleep(2)
         connModule.sendCommand(shell, "/etc/init.d/firewall restart")
         time.sleep(2)
-        if device:
+        if name_rut9:
             connModule.sendCommand(shell, "opkg install /tmp/iperf3_3.10.1-1_mips_24kc.ipk")
         else:
             connModule.sendCommand(shell, "opkg install /tmp/iperf3_3.10.1-1_arm_cortex-a7_neon-vfpv4.ipk")
@@ -110,10 +110,10 @@ class Control:
         result = response.split("\n")[1].split()
         print(result[0])
         if "RUT9" in result[0]:
-            device = True
+            device_name = True
         else:
-            device = False
-        return device
+            device_name = False
+        return device_name
 
     def __del__(self):
         if self.server_ssh:
