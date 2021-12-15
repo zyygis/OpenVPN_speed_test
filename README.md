@@ -22,11 +22,13 @@
 ### Mobile Topology
 ![alt text](https://github.com/zyygis/OpenVPN_speed_test/blob/master/Mobile%20topology.png)
 ### 4. In info.json file fill in necessary information.
-
-- Speed test through **WIRED WAN**. In info.json file in "Server_WAN_ip" line enter **WAN IP ADDRESS** (Server_WAN_ip": "**WAN IP**").
-- Speed test through **MOBILE**. In info.json file in "Server_WAN_ip" line enter **MOBILE PUBLIC IP ADDRESS** (Server_WAN_ip": "**MOBILE PUBLIC IP**").  
+**WIRED WAN TEST**  
+In info.json file in "Server_WAN_ip" line enter **WAN IP ADDRESS** (Server_WAN_ip": "**WAN IP**").  
   
-Example below is Speed test through **WIRED WAN**.
+**MOBILE TEST**  
+In info.json file in "Server_WAN_ip" line enter **MOBILE PUBLIC IP ADDRESS** (Server_WAN_ip": "**MOBILE PUBLIC IP**").  
+  
+Example below is **WIRED WAN** test.
 ```json
 {
   "client_config": 
@@ -80,8 +82,7 @@ Example below is Speed test through **WIRED WAN**.
 Test report is saved in ~/OpenVPN_test/Test_report  
 
 ### Start the Test
-Navigate to ~/OpenVPN_speed_test folder.  
-In the terminal enter: python3 main.py
+In terminal navigate to ~/OpenVPN_speed_test folder and start the test by entering command: python3 main.py (if needed add arguments. e.g. -t 10, -f Test_report)    
 
 ### Example of Test Report
 ![alt text](https://github.com/zyygis/OpenVPN_speed_test/blob/master/test_report.png)
