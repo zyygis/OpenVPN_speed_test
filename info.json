@@ -3,12 +3,12 @@
   {
     "Config_name": "router2",
     "Server_LAN_ip": "192.168.3.1",
-    "Server_WAN_ip": "84.15.161.186",
+    "Server_WAN_ip": "10.0.0.30",
     "Server_User": "root",
     "Server_Password": "Admin123",
-    "Encryption":"DESX-CBC",
+    "Encryption":"BF-CBC",
     "LZO":"yes",
-    "Protocol":"tcp-client",
+    "Protocol":"udp",
     "Authentication":"static key"
   },
   "server_config":
@@ -18,9 +18,9 @@
     "Client_WAN_ip": "10.0.0.20",
     "Client_User": "root",
     "Client_Password": "Admin123",
-    "Encryption":"DESX-CBC",
+    "Encryption":"BF-CBC",
     "LZO":"yes",
-    "Protocol":"tcp-server",
+    "Protocol":"udp",
     "Authentication":"static key"
   }
 }
