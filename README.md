@@ -17,7 +17,7 @@
 
 ### 3. Connect devices with Ethernet cable via WAN port.
 
-### 4. In info.json file fill in necessary information for e.g.
+### 4. In info.json file fill in necessary information for example.
 
 ```json
 {
@@ -69,7 +69,7 @@
 - -t, --testcycles | Number for how many iperf test to run. (Default is 5)
 - -f, --filename | Test report file name. (Default is OpenVPN_report)
 
-Test report is saved in /OpenVPN_test/Test_report
+Test report is saved in ~/OpenVPN_test/Test_report
 
 ### Topology
 ![alt text](https://github.com/zyygis/OpenVPN_speed_test/blob/master/diagram.png)
