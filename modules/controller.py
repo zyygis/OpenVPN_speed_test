@@ -15,8 +15,6 @@ from tqdm import tqdm
 # AES-128-CBC
 # AES-192-CBC
 
-# rutx09 84.15.129.227
-# rutx11 84.15.161.186
 class Control:
 
     client_ssh = None
@@ -33,7 +31,7 @@ class Control:
         self.client_ssh.close()
 
     def server_setup(self):
-        print("Preparing server")
+        print("Server is being prepared")
         self.__configFile.create_config("server")
         self.server_ssh, self.server_shell = connModule.createSSHClient(self.server_info["Server_LAN_ip"], self.server_info["Server_User"], self.server_info["Server_Password"])
         device_name = self.checkDevice(self.server_shell)
@@ -41,12 +39,11 @@ class Control:
         connModule.sendCommand(self.server_shell, "iperf3 -s")
 
     def client_setup(self):
-        print("Preparing client")
+        print("Client is being prepared")
         self.__configFile.create_config("client")
         self.client_ssh, self.client_shell = connModule.createSSHClient(self.client_info["Client_WAN_ip"], self.client_info["Client_User"], self.client_info["Client_Password"])
         device_name = self.checkDevice(self.client_shell)
         self.exec_commands(self.client_ssh, self.client_shell, device_name)
-        # connModule.sendCommand(self.client_shell, "iperf3 -c " + self.server_info["Server_LAN_ip"])
 
     def speed_test(self, shell, client_info, server_info, test_cycles, file_name):
         output = connModule.getResponse(shell)
@@ -59,7 +56,6 @@ class Control:
         for i in tqdm(range(test_cycles)):
             connModule.sendCommand(shell, "iperf3 -c " + server_info["Server_LAN_ip"])
             time.sleep(2)
-            # print("Test cycle ", i)
             while True:
                 output = connModule.getResponse(shell)
                 if "- -" in output:
@@ -85,13 +81,11 @@ class Control:
         test_data = [['Encryption', 'LZO', ' '],[encrypt, lzo, ' '],[],['Authentication', 'Protocol', ' '],[authent, protocol, ' '],[],['Upload Mbits/sec', 'Download Mbits/sec', ' ']]
         for (line, dline) in zip(upload, download):
             test_data.append([line, dline, ' '])
-        # test_data.append([])
         test_data.append(['Upload average', 'Download average', ' '])
         test_data.append([upaverage, downaverage, ' '])
         return test_data
 
     def exec_commands(self, ssh, shell, name_rut9):
-
         filesModule.sendFiles(ssh, name_rut9)
         time.sleep(2)
         connModule.sendCommand(shell, "/etc/init.d/openvpn restart")
@@ -108,7 +102,6 @@ class Control:
         connModule.sendCommand(shell, "uci get system.system.routername")
         response = connModule.getResponse(shell)
         result = response.split("\n")[1].split()
-        # print(".............."+str(response)+".....................")
         if "RUT9" in result[0]:
             device_name = True
         else:

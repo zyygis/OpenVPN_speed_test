@@ -1,4 +1,3 @@
-from datetime import datetime
 import csv
 import os.path
 
@@ -7,7 +6,6 @@ class Write:
     __file = None
 
     def write_file(self, test_data, file_name):
-        # filename = f"{datetime.now():%Y-%m-%d_%H:%M:%S}.csv"
         self.file_name = file_name
         if os.path.isfile(r"/home/studentas/Documents/python/OpenVPN_speed_test/Test_report/" + self.file_name + ".csv"):
             file_data = self.read_file()

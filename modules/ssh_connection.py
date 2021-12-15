@@ -22,7 +22,6 @@ def waitForResponse(shell):
     while not shell.recv_ready():
         time.sleep(1)
         attempts += 1
-        # print(attempts)
         if attempts > 30:
             print("Device not responding")
             exit()
@@ -30,7 +29,6 @@ def waitForResponse(shell):
 def sendCommand(shell, command):
     try:
         shell.send(command + "\n")
-        # time.sleep(2)
     except Exception as e:
         print("Error sending command", e)
         exit()

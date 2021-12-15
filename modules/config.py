@@ -39,7 +39,7 @@ class Config:
             type_tmpl = "client.tmpl"
             role_info = client_config
         else:
-            print("Wrong type")
+            print("Wrong role")
             exit()
         try:
             with open('/home/studentas/Documents/python/OpenVPN_speed_test/templates/'+ type_tmpl, 'r') as f:
