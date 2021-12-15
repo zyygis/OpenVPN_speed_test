@@ -6,7 +6,7 @@
 - [pip3 install scp](https://pypi.org/project/scp/)
 
 ### 1. Set up Server device.  
-- Static WAN IP address (e.g. 10.0.0.30, netmask 255.255.255.0)
+- Static WAN IP address (e.g. 10.0.0.30, netmask 255.255.255.0 or public IP)
 - Static LAN IP address (e.g. 192.168.3.1, netmask 255.255.255.0)
 
 ### 2. Set up Client device.
